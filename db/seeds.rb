@@ -1,12 +1,11 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
+
 syyrius = User.create({
       firstname: 'Syyrius', 
       name: 'Jio', 
       nickname: 'Syy',
       address: 'La Loupe',
-      admin: false,
       password: "12345678",
       password_confirmation: "12345678",
       phone: '0093939393', 
@@ -30,24 +29,24 @@ mathieu = User.create({
       name: 'Carbonel', 
       nickname: 'Karbo',
       address: 'La Loupe',
-      admin: false,
       password: "12345678",
       password_confirmation: "12345678",
       phone: '0123456789', 
       email: 'mathieu@wcs.fr'
 })
 
-Event.create(
+annivMat = Event.create(
 {
       name: 'Anniversaire de Mathieu',
       address: 'Gymnase',
       date: DateTime.strptime("09/01/2015 17:00", "%d/%m/%Y %H:%M"),
       theme: 'anniversaire',
-      price_per_person: 5,
+      price_per_person: 5.0,
       nb_person: 0,
       limit_payment: DateTime.strptime("06/01/2015 17:00", "%d/%m/%Y %H:%M"),
       private_event: false,
-      user_id: mathieu.id
+      user_id: mathieu.id,
+      description: "Petite description test"
 })
 
 Event.create(
@@ -69,8 +68,20 @@ Event.create(
       address: 'Gymnase de La Loupe',
       date: DateTime.strptime("26/11/2015 12:00", "%d/%m/%Y %H:%M"),
       theme: 'sport',
-      price_per_person: 0,
+      price_per_person: 0.0,
       nb_person: 0,
       private_event: false,
       user_id: leia.id
+})
+
+Reservation.create(
+{
+      paid: true,
+      penalty: 1.05,
+      nb_reservation: 2,
+      note: 5,
+      message: "",
+      user_id: mathieu.id,
+      event_id: annivMat.id,
+      participation: false
 })
