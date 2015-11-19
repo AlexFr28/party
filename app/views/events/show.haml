@@ -13,3 +13,10 @@
     %li= "Soirée privée"
 
 %p= @event.description
+
+- if @resa.length == 0
+  = button_to "M'inscrire", event_path(@event.id), method: :get, notice: "Ta participation est validée pour l'événement #{@event.name}"
+- elsif @resa[0].participation == true
+  = button_to "Me désinscrire", event_path(@event.id), method: :get, notice: "Ta désinscription à l'événement #{@event.name} a bien été prise en compte"
+- else
+  = button_to "M'inscrire", event_path(@event.id), method: :get, notice: "Ta participation est validée pour l'événement #{@event.name}"

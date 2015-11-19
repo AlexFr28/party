@@ -1,0 +1,28 @@
+%div.flash
+  = flash[:error]
+
+%h1 Nouvel évènement
+= form_for @event do |f|
+  = f.label :Nom
+  = f.text_field :name
+  = f.label :Adresse
+  = f.text_field :address
+  = f.label :Date
+  = f.date_field :date, :minute_step => 15 
+  = f.label :Thème
+  = f.text_field :theme
+  = f.label :Nombre_de_personne
+  = f.number_field :nb_person
+  = f.label :Prix
+  = f.number_field :price_per_person
+  = f.label :Date_limite_de_paiement
+  = f.date_field :limit_payment, :minute_step => 15  
+  = f.label :Evènement_privé
+  = f.check_box :private_event
+  = f.label :Description
+  = f.text_area :description
+  = f.label :Image
+  = f.text_field :image
+  = f.hidden_field :user_id, :value => current_user.id 
+  
+  = f.submit "Créer"   
