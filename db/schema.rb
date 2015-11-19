@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119133034) do
+ActiveRecord::Schema.define(version: 20151119153651) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -21,25 +21,15 @@ ActiveRecord::Schema.define(version: 20151119133034) do
     t.float    "price_per_person"
     t.integer  "nb_person"
     t.datetime "limit_payment"
-    t.boolean  "private_event"
+    t.boolean  "private_event",    default: false
     t.integer  "user_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "description"
     t.string   "image"
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id"
-
-  create_table "private_events", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "event_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "private_events", ["event_id"], name: "index_private_events_on_event_id"
-  add_index "private_events", ["user_id"], name: "index_private_events_on_user_id"
 
   create_table "reservations", force: :cascade do |t|
     t.boolean  "paid"

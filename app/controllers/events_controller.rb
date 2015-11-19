@@ -20,5 +20,9 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @rest = "illimité"
+    if @event.nb_person != 0
+      @rest = "#{}/#{@event.nb_person}"
+    end
   end
 end
