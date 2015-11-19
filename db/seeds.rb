@@ -45,7 +45,8 @@ annivMat = Event.create(
       nb_person: 0,
       limit_payment: DateTime.strptime("06/01/2015 17:00", "%d/%m/%Y %H:%M"),
       private_event: false,
-      user_id: mathieu.id
+      user_id: mathieu.id,
+      description: "Petite description test"
 })
 
 Event.create(
