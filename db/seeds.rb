@@ -5,10 +5,10 @@ User.create({
       firstname: 'Syyrius', 
       name: 'Jio', 
       nickname: 'Syy',
-      adress: 'La Loupe',
+      address: 'La Loupe',
       admin: false,
       password: "12345678",
-      confirmation_password: "12345678",
+      password_confirmation: "12345678",
       phone: '0093939393', 
       email: 'xx@xxxx.com'
 })
@@ -17,10 +17,10 @@ User.create({
       firstname: 'Léïa', 
       name: 'Admin', 
       nickname: 'Ad',
-      adress: 'Paris',
+      address: 'Paris',
       admin: true,
       password: "12345678",
-      confirmation_password: "12345678",
+      password_confirmation: "12345678",
       phone: '0123456789', 
       email: 'admin@wcs.fr'
 })
