@@ -4,17 +4,17 @@
 %h1 Nouvel évènement
 = form_for @event do |f|
   = f.label :Nom
-  = f.text_field :name
+  = f.text_field :name, size: 20
   = f.label :Adresse
-  = f.text_field :address
+  = f.text_area :address
   = f.label :Date
   = f.date_field :date, :minute_step => 15 
   = f.label :Thème
   = f.text_field :theme
   = f.label :Nombre_de_personne
-  = f.number_field :nb_person
+  = f.number_field :nb_person, :value => 20, min: 0, max: 99
   = f.label :Prix
-  = f.number_field :price_per_person
+  = f.number_field :price_per_person, :value => 5, min: 0, max: 999, step:0.5
   = f.label :Date_limite_de_paiement
   = f.date_field :limit_payment, :minute_step => 15  
   = f.label :Evènement_privé

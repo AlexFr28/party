@@ -2,6 +2,7 @@ class ReservationsController < ApplicationController
 
   def create # pour event public (je m'inscris)
     @resa = Reservation.new(resa_param)
+    @resa.participation = true
     if @resa.save
       redirect_to event_path(@resa.event_id), method: :get, notice: "Ta participation est validée pour l'événement #{@resa.event.name}"
     else
