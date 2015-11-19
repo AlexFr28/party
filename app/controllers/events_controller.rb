@@ -8,7 +8,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @event = Event.new(event_param)
     @event.date = DateTime.strptime(params["event"]["date"], "%Y-%m-%d")
     @event.limit_payment = DateTime.strptime(params["event"]["limit_payment"], "%Y-%m-%d")
@@ -33,15 +32,23 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @rest = "illimité"
     if @event.nb_person != 0
-      @rest = "#{}/#{@event.nb_person}"
+      @rest = "#{remaining_places(@event)}/#{@event.nb_person}"
     end
-    @resa = Reservation.where(user_id: current_user.id, event_id: @event.id)
+    @resa = Reservation.where(user_id: current_user.id, event_id: @event.id)[0]
+    @newresa = Reservation.new()
   end
 
   private
 
   def event_param
     params.require(:event).permit(:name, :address, :date, :theme, :price_per_person, :nb_person, :limit_payment, :private_event, :user_id, :description, :image)
+  end
+
+  def remaining_places(event)
+    event.reservations.each do |resa|
+
+    end
+    5
   end
 
 end
