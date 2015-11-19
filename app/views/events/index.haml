@@ -1,0 +1,7 @@
+%h1 Liste des événements
+
+%ul
+  - @events.each do |event|
+    %li
+      = "#{event.date.strftime("%m/%d/%Y")}"
+      = link_to event.name, event_path(event.id), method: :get

@@ -1,0 +1,9 @@
+%h1= @event.name
+
+%ul
+  %li= "Le #{@event.date.strftime("%m/%d/%Y")} à #{@event.date.strftime("%H:%M")}"
+  %li= "Lieu: #{@event.address}"
+  - if @event.theme != nil
+    %li= "Theme: #{@event.theme.capitalize}"
+  %li= "Prix: #{'%.2f' % @event.price_per_person} €/pers"
+  %li= "Nombre de place: #{}/#{@event.nb_person}"
