@@ -3,4 +3,5 @@
 %ul
   - @events.each do |event|
     %li
-      = event.name
+      = "#{event.date.strftime("%m/%d/%Y")}"
+      = link_to event.name, event_path(event.id), method: :get
