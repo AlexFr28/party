@@ -8,8 +8,34 @@
     %li= "Theme: #{@event.theme.capitalize}"
   %li= "Places restantes: #{@rest}"
   - if @event.limit_payment != nil
-    %li= "Paiment de #{'%.2f' % @event.price_per_person}€ avant le #{@event.limit_payment.strftime("%d/%m/%Y")} à #{@event.limit_payment.strftime("%H:%M")}"
+    %li= "Paiement de #{'%.2f' % @event.price_per_person}€ avant le #{@event.limit_payment.strftime("%d/%m/%Y")} à #{@event.limit_payment.strftime("%H:%M")}"
   - if @event.private_event
     %li= "Soirée privée"
 
 %p= @event.description
+
+- if @event.user != current_user
+  - if @resa == nil
+    - if @remaining != 0
+      - # event public
+      = form_for @newresa, url: reservations_path(@newresa.id), method: :post do |f|
+        = f.hidden_field :user_id, :value => current_user.id
+        = f.hidden_field :event_id, :value => @event.id
+        = f.label :Nombre_de_personne
+        = f.number_field :nb_reservation, :value => 1, min: 1, max: @remaining
+        = f.submit "M'inscrire"
+  - elsif @resa.participation == true
+    - if @event.private_event
+      - # event privé
+      = button_to "Me désinscrire", reservation_path(@resa.id), method: :patch
+    - else
+      - # event public
+      = button_to "Me désinscrire", reservation_path(@resa.id), method: :delete
+  - else
+    - # event privé
+    = form_for @resa, url: reservation_path(@resa.id), method: :put do |f|
+      = f.hidden_field :user_id, :value => current_user.id
+      = f.hidden_field :event_id, :value => @event.id
+      = f.label :Nombre_de_personne
+      = f.number_field :nb_reservation, :value => 1, min: 1, max: @remaining
+      = f.submit "M'inscrire"

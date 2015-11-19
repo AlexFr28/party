@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119153651) do
+ActiveRecord::Schema.define(version: 20151119211824) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -32,16 +32,16 @@ ActiveRecord::Schema.define(version: 20151119153651) do
   add_index "events", ["user_id"], name: "index_events_on_user_id"
 
   create_table "reservations", force: :cascade do |t|
-    t.boolean  "paid"
-    t.float    "penalty"
+    t.boolean  "paid",           default: false
+    t.float    "penalty",        default: 0.0
     t.integer  "nb_reservation"
-    t.integer  "note"
-    t.string   "message"
+    t.integer  "note",           default: 0
+    t.string   "message",        default: ""
     t.integer  "user_id"
     t.integer  "event_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.boolean  "participation"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "participation",  default: false
   end
 
   add_index "reservations", ["event_id"], name: "index_reservations_on_event_id"
