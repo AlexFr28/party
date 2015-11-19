@@ -1,4 +1,32 @@
 Rails.application.routes.draw do
+  get 'events/index'
+
+  get 'events/new'
+
+  get 'events/create'
+
+  get 'events/edit'
+
+  get 'events/update'
+
+  get 'events/delete'
+
+  get 'events/show'
+
+  get 'users/index'
+
+  get 'users/new'
+
+  get 'users/create'
+
+  get 'users/edit'
+
+  get 'users/update'
+
+  get 'users/delete'
+
+  get 'users/show'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
