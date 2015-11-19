@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :events
   has_many :reservations
 
-  validate_presence_of :name, :firstname, :nickname, :phone
+  validates_presence_of :name, :firstname, :nickname, :phone
   validates :phone, length: { is: 10 }
   validates_uniqueness_of :nickname
 end
