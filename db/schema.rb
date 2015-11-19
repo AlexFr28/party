@@ -11,7 +11,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119094553) do
+ActiveRecord::Schema.define(version: 20151119102717) do
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.datetime "date"
+    t.string   "theme"
+    t.float    "price_per_person"
+    t.integer  "nb_person"
+    t.datetime "limit_payment"
+    t.boolean  "private"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "events", ["user_id"], name: "index_events_on_user_id"
+
+  create_table "private_events", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "private_events", ["event_id"], name: "index_private_events_on_event_id"
+  add_index "private_events", ["user_id"], name: "index_private_events_on_user_id"
+
+  create_table "reservations", force: :cascade do |t|
+    t.boolean  "paid"
+    t.float    "penalty"
+    t.integer  "nb_reservation"
+    t.integer  "note"
+    t.string   "message"
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "reservations", ["event_id"], name: "index_reservations_on_event_id"
+  add_index "reservations", ["user_id"], name: "index_reservations_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                                   null: false

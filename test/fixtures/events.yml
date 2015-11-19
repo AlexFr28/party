@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  address: MyString
+  date: 
+  theme: MyString
+  price_per_person: 1.5
+  nb_person: 1
+  limit_payment: 
+  private: false
+
+two:
+  name: MyString
+  address: MyString
+  date: 
+  theme: MyString
+  price_per_person: 1.5
+  nb_person: 1
+  limit_payment: 
+  private: false
