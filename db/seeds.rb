@@ -73,10 +73,14 @@ Event.create(
       user_id: leia.id
 })
 
-# Reservation.create(
-# {
-#       user_id = mathieu.id,
-#       event_id = annivMat.id,
-#       paid = true,
-#       nb_reservation = 2
-# })
+Reservation.create(
+{
+      paid: true,
+      penalty: 1.05,
+      nb_reservation: 2,
+      note: 5,
+      message: "",
+      user_id: mathieu.id,
+      event_id: annivMat.id,
+      participation: false
+})
