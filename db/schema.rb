@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119105455) do
+ActiveRecord::Schema.define(version: 20151119113617) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20151119105455) do
     t.float    "price_per_person"
     t.integer  "nb_person"
     t.datetime "limit_payment"
-    t.boolean  "private"
+    t.boolean  "private_event"
     t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
