@@ -10,6 +10,10 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def create_private_resa
+    
+  end
+
   def update # pour event privé (changement de valeur de participation (true/false))
     @resa = Reservation.find(params[:id])
     @resa.participation = !@resa.participation
