@@ -48,6 +48,16 @@ class EventsController < ApplicationController
       @rest = "#{@remaining}/#{@event.nb_person}"
     end
     @resa = Reservation.where(user_id: current_user.id, event_id: @event.id)[0]
+
+    # calcul de la pénalité
+    d = @event.limit_payment.to_datetime
+    day_of_penality = ((DateTime.now.to_f - d.to_f)/60/60/24).ceil
+    if @resa != nil && day_of_penality > 0
+      if @resa.participation
+        @penality = 0.5 * day_of_penality
+      end
+    end
+
     @newresa = Reservation.new()
   end
 
