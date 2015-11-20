@@ -1,6 +1,11 @@
 class EventsController < ApplicationController
+
   def index
-    @events = Event.all
+    @events = Event.all.order("date ASC")
+  end
+
+  def historic
+    @events = Event.all.order("date DESC")
   end
 
   def new
@@ -12,7 +17,11 @@ class EventsController < ApplicationController
     @event.date = DateTime.strptime(params["event"]["date"], "%Y-%m-%d")
     @event.limit_payment = DateTime.strptime(params["event"]["limit_payment"], "%Y-%m-%d")
     if @event.save
-      redirect_to users_path, notice: "\"#{@event.name}\" enregistré"
+      if @event.private_event
+        redirect_to participants_path(@event.id), method: :get, notice: "\"#{@event.name}\" enregistré"
+      else
+        redirect_to event_path(@event.id), method: :get, notice: "\"#{@event.name}\" enregistré"
+      end
     else
       render 'new'
     end
@@ -30,6 +39,9 @@ class EventsController < ApplicationController
   def show
     @user = current_user
     @event = Event.find(params[:id])
+
+    @reservations = @event.reservations
+
     @rest = "illimité"
     @remaining = @event.remaining_places
     if @event.nb_person != 0
@@ -37,6 +49,18 @@ class EventsController < ApplicationController
     end
     @resa = Reservation.where(user_id: current_user.id, event_id: @event.id)[0]
     @newresa = Reservation.new()
+  end
+
+  def participants
+    @event_id = params["id"]
+    @participants = User.all
+  end
+
+  def payment
+    resa = Reservation.find(params["resa_id"])
+    resa.paid = !resa.paid
+    resa.save
+    redirect_to event_path(params["event_id"]), method: :get
   end
 
   private

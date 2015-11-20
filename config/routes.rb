@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   resources :events
   resources :reservations
 
+  get 'participants/:id' => 'events#participants', as: :participants
+  get 'payment/:event_id/:resa_id' => 'events#payment', as: :payment
+  get 'historic' => 'events#historic', as: :historic
+
   # Example resource route with options:
   #   resources :products do
   #     member do

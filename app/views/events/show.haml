@@ -15,27 +15,41 @@
 %p= @event.description
 
 - if @event.user != current_user
-  - if @resa == nil
-    - if @remaining != 0
-      - # event public
-      = form_for @newresa, url: reservations_path(@newresa.id), method: :post do |f|
+  - if @resa == nil && @resa.event.date > DateTime.now
+    - if @resa == nil
+      - if @remaining != 0
+        - # event public
+        = form_for @newresa, url: reservations_path(@newresa.id), method: :post do |f|
+          = f.hidden_field :user_id, :value => current_user.id
+          = f.hidden_field :event_id, :value => @event.id
+          = f.label :Nombre_de_personne
+          = f.number_field :nb_reservation, :value => 1, min: 1, max: @remaining
+          = f.submit "M'inscrire"
+    - elsif @resa.participation == true
+      - if @event.private_event
+        - # event privé
+        = button_to "Me désinscrire", reservation_path(@resa.id), method: :patch
+      - else
+        - # event public
+        = button_to "Me désinscrire", reservation_path(@resa.id), method: :delete
+    - else
+      - # event privé
+      = form_for @resa, url: reservation_path(@resa.id), method: :put do |f|
         = f.hidden_field :user_id, :value => current_user.id
         = f.hidden_field :event_id, :value => @event.id
         = f.label :Nombre_de_personne
         = f.number_field :nb_reservation, :value => 1, min: 1, max: @remaining
         = f.submit "M'inscrire"
-  - elsif @resa.participation == true
-    - if @event.private_event
-      - # event privé
-      = button_to "Me désinscrire", reservation_path(@resa.id), method: :patch
-    - else
-      - # event public
-      = button_to "Me désinscrire", reservation_path(@resa.id), method: :delete
-  - else
-    - # event privé
-    = form_for @resa, url: reservation_path(@resa.id), method: :put do |f|
-      = f.hidden_field :user_id, :value => current_user.id
-      = f.hidden_field :event_id, :value => @event.id
-      = f.label :Nombre_de_personne
-      = f.number_field :nb_reservation, :value => 1, min: 1, max: @remaining
-      = f.submit "M'inscrire"
+- else
+  %ul
+    - @reservations.each do |reservation|
+      %li
+        = "#{reservation.user.nickname}"
+        %br
+        = "Montant : #{@event.price_per_person * reservation.nb_reservation}€"
+        - if reservation.penalty != 0
+          = " + #{reservation.penalty}€ = #{@event.price_per_person * reservation.nb_reservation + reservation.penalty}€"
+        - if reservation.paid
+          = button_to('Payé', payment_path(@event.id, reservation.id), method: :get, :class => 'btn btn-success')
+        - else
+          = button_to('Non payé', payment_path(@event.id, reservation.id), method: :get, :class => 'btn btn-danger')
