@@ -23,22 +23,13 @@ class EventsController < ApplicationController
     @event.limit_payment = DateTime.strptime(params["event"]["limit_payment"], "%Y-%m-%d")
     if @event.save
       if @event.private_event
-        redirect_to participants_path(@event.id), method: :get, notice: "\"#{@event.name}\" enregistré"
+        redirect_to users_path(@event.id), method: :get, notice: "\"#{@event.name}\" enregistré"
       else
         redirect_to event_path(@event.id), method: :get, notice: "\"#{@event.name}\" enregistré"
       end
     else
       render 'new'
     end
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def delete
   end
 
   def show
@@ -72,11 +63,6 @@ class EventsController < ApplicationController
     end
 
     @newresa = Reservation.new()
-  end
-
-  def participants
-    @event_id = params["id"]
-    @participants = User.all
   end
 
   def payment

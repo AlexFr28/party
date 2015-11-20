@@ -1,8 +1,17 @@
 class UsersController < ApplicationController
 
-  # def index
-  #   @users = User.all
-  # end
+  def index
+    @event = Event.find(params["event_id"])
+    @users = User.all
+    @participants = {}
+    @users.each do |user|
+      if Reservation.where(user_id: user.id, event_id: params["event_id"]).count == 0
+        @participants[user] = false
+      else
+        @participants[user] = true
+      end        
+    end
+  end
 
   # def new
   #   @user = User.new

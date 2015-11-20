@@ -1,0 +1,12 @@
+%h1= "Sélection les participants de l'événement #{@event.name}"
+
+%ul
+- @users.each do |user|
+  %li
+    = user.nickname
+    - if @participants[user]
+      = link_to "supprimer", destroyprivateresa_path(@event_id, user_id)
+    - else
+      = link_to "ajouter", createprivateresa_path(@event_id, user.id), method: :get
+
+= button_to "Valider", event_path(@event_id), method: :get

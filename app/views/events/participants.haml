@@ -1,9 +1,0 @@
-%h1 Choisis tes participants
-
-%ul
-- @participants.each do |participant|
-  %li
-    = participant.nickname
-    = link_to "ajouter"
-
-= button_to "Valider", event_path(@event_id), method: :get
