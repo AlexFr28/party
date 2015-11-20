@@ -8,7 +8,7 @@
     %li= "Theme: #{@event.theme.capitalize}"
   %li= "Places restantes: #{@rest}"
   - if @event.limit_payment != nil
-    %li= "Paiement de #{'%.2f' % @event.price_per_person}€ avant le #{@event.limit_payment.strftime("%d/%m/%Y")} à #{@event.limit_payment.strftime("%H:%M")}"
+    %li= "Coût de #{'%.2f' % @event.price_per_person}€/pers avant le #{@event.limit_payment.strftime("%d/%m/%Y")} à #{@event.limit_payment.strftime("%H:%M")}"
   - if @event.private_event
     %li= "Soirée privée"
 
