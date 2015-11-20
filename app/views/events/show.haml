@@ -15,7 +15,7 @@
 %p= @event.description
 
 - if @event.user != current_user
-  - if @resa == nil && @resa.event.date > DateTime.now
+  - if @event.date > DateTime.now
     - if @resa == nil
       - if @remaining != 0
         - # event public
@@ -26,12 +26,13 @@
           = f.number_field :nb_reservation, :value => 1, min: 1, max: @remaining
           = f.submit "M'inscrire"
     - elsif @resa.participation == true
-      - if @event.private_event
-        - # event privé
-        = button_to "Me désinscrire", reservation_path(@resa.id), method: :patch
-      - else
-        - # event public
-        = button_to "Me désinscrire", reservation_path(@resa.id), method: :delete
+      - if !@resa.paid
+        - if @event.private_event
+          - # event privé
+          = button_to "Me désinscrire", reservation_path(@resa.id), method: :patch
+        - else
+          - # event public
+          = button_to "Me désinscrire", reservation_path(@resa.id), method: :delete
     - else
       - # event privé
       = form_for @resa, url: reservation_path(@resa.id), method: :put do |f|
