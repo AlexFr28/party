@@ -1,11 +1,11 @@
 %h1 Evénements à venir
 
-= button_to "Nouvel événement", new_event_path, method: :get
-= button_to "Historique", historic_path, method: :get
-
 %ul
   - @events.each do |event|
     - if event.date > DateTime.now
-      %li
+      .event_box
         = "#{event.date.strftime("%d/%m/%Y")}"
         = link_to event.name, event_path(event.id), method: :get
+
+= button_to "Historique", historic_path, method: :get, :class => "button_to"
+

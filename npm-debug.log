@@ -1,0 +1,149 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--global',
+1 verbose cli   'foundation-cli' ]
+2 info using npm@2.11.3
+3 info using node@v0.12.7
+4 verbose node symlink /usr/bin/node
+5 verbose install initial load of /home/apprenti/npm-global/lib/package.json
+6 verbose readDependencies loading dependencies from /home/apprenti/npm-global/lib/package.json
+7 silly cache add args [ 'foundation-cli', null ]
+8 verbose cache add spec foundation-cli
+9 silly cache add parsed spec { raw: 'foundation-cli',
+9 silly cache add   scope: null,
+9 silly cache add   name: 'foundation-cli',
+9 silly cache add   rawSpec: '',
+9 silly cache add   spec: '*',
+9 silly cache add   type: 'range' }
+10 silly addNamed foundation-cli@*
+11 verbose addNamed "*" is a valid semver range for foundation-cli
+12 silly addNameRange { name: 'foundation-cli', range: '*', hasData: false }
+13 silly mapToRegistry name foundation-cli
+14 silly mapToRegistry using default registry
+15 silly mapToRegistry registry https://registry.npmjs.org/
+16 silly mapToRegistry uri https://registry.npmjs.org/foundation-cli
+17 verbose addNameRange registry:https://registry.npmjs.org/foundation-cli not in flight; fetching
+18 verbose request uri https://registry.npmjs.org/foundation-cli
+19 verbose request no auth needed
+20 info attempt registry request try #1 at 11:49:47
+21 verbose request id 481ad6888d73885e
+22 verbose etag "29LVU0NI70PSTWN5SX0U3S9GJ"
+23 http request GET https://registry.npmjs.org/foundation-cli
+24 http 304 https://registry.npmjs.org/foundation-cli
+25 silly get cb [ 304,
+25 silly get   { date: 'Fri, 20 Nov 2015 10:49:47 GMT',
+25 silly get     via: '1.1 varnish',
+25 silly get     'cache-control': 'max-age=60',
+25 silly get     etag: '"29LVU0NI70PSTWN5SX0U3S9GJ"',
+25 silly get     age: '0',
+25 silly get     connection: 'keep-alive',
+25 silly get     'x-served-by': 'cache-lcy1120-LCY',
+25 silly get     'x-cache': 'HIT',
+25 silly get     'x-cache-hits': '1',
+25 silly get     'x-timer': 'S1448016587.753851,VS0,VE162',
+25 silly get     vary: 'Accept' } ]
+26 verbose etag https://registry.npmjs.org/foundation-cli from cache
+27 verbose get saving foundation-cli to /home/apprenti/.npm/registry.npmjs.org/foundation-cli/.cache.json
+28 silly addNameRange number 2 { name: 'foundation-cli', range: '*', hasData: true }
+29 silly addNameRange versions [ 'foundation-cli',
+29 silly addNameRange   [ '0.1.0',
+29 silly addNameRange     '0.2.0',
+29 silly addNameRange     '1.0.0-rc.1',
+29 silly addNameRange     '1.0.0',
+29 silly addNameRange     '1.0.1',
+29 silly addNameRange     '1.0.2',
+29 silly addNameRange     '1.0.3',
+29 silly addNameRange     '1.0.4',
+29 silly addNameRange     '1.1.0',
+29 silly addNameRange     '1.1.1',
+29 silly addNameRange     '1.1.2',
+29 silly addNameRange     '2.0.0-beta',
+29 silly addNameRange     '2.0.0-beta.2',
+29 silly addNameRange     '2.0.0-beta.3',
+29 silly addNameRange     '2.0.0-beta.4',
+29 silly addNameRange     '2.0.0' ] ]
+30 silly addNamed foundation-cli@2.0.0
+31 verbose addNamed "2.0.0" is a plain semver version for foundation-cli
+32 silly cache afterAdd foundation-cli@2.0.0
+33 verbose afterAdd /home/apprenti/.npm/foundation-cli/2.0.0/package/package.json not in flight; writing
+34 verbose afterAdd /home/apprenti/.npm/foundation-cli/2.0.0/package/package.json written
+35 silly install resolved [ { name: 'foundation-cli',
+35 silly install resolved     version: '2.0.0',
+35 silly install resolved     description: 'Command-line interface for Foundation for Apps.',
+35 silly install resolved     keywords: [ 'foundation', 'cli', 'scaffold' ],
+35 silly install resolved     author:
+35 silly install resolved      { name: 'ZURB',
+35 silly install resolved        email: 'foundation@zurb.com',
+35 silly install resolved        url: 'http://zurb.com' },
+35 silly install resolved     main: 'lib/index.js',
+35 silly install resolved     bin: { foundation: './bin/cli.js' },
+35 silly install resolved     dependencies:
+35 silly install resolved      { async: '^0.9.0',
+35 silly install resolved        bower: '^1.3.12',
+35 silly install resolved        colors: '^1.0.3',
+35 silly install resolved        exec: '^0.1.2',
+35 silly install resolved        inquirer: '^0.8.3',
+35 silly install resolved        'is-root': '^1.0.0',
+35 silly install resolved        multiline: '^1.0.2',
+35 silly install resolved        nopt: '^3.0.1',
+35 silly install resolved        npm: '^2.1.12',
+35 silly install resolved        open: '0.0.5',
+35 silly install resolved        'paint-by-number': '1.0.0',
+35 silly install resolved        rimraf: '^2.2.8',
+35 silly install resolved        semver: '^4.3.0',
+35 silly install resolved        'string-length': '^1.0.0',
+35 silly install resolved        'update-notifier': '^0.2.2',
+35 silly install resolved        which: '^1.0.8' },
+35 silly install resolved     homepage: 'http://foundation.zurb.com',
+35 silly install resolved     repository:
+35 silly install resolved      { type: 'git',
+35 silly install resolved        url: 'git+https://github.com/zurb/foundation-cli.git' },
+35 silly install resolved     bugs: { url: 'https://github.com/zurb/foundation-cli/issues' },
+35 silly install resolved     scripts:
+35 silly install resolved      { postinstall: 'node lib/welcome.js',
+35 silly install resolved        test: 'node bin/cli.js new' },
+35 silly install resolved     preferGlobal: true,
+35 silly install resolved     engines: { node: '>=0.10.33' },
+35 silly install resolved     license: 'MIT',
+35 silly install resolved     gitHead: '7275bba6ad82ef00029d637a5150c6de51a348a5',
+35 silly install resolved     _id: 'foundation-cli@2.0.0',
+35 silly install resolved     _shasum: '3be409b20a17a2fbfcaf82fb7a5d0db64b340d65',
+35 silly install resolved     _from: 'foundation-cli@*',
+35 silly install resolved     _npmVersion: '2.8.4',
+35 silly install resolved     _nodeVersion: '0.10.38',
+35 silly install resolved     _npmUser: { name: 'gakimball', email: 'geoff@zurb.com' },
+35 silly install resolved     dist:
+35 silly install resolved      { shasum: '3be409b20a17a2fbfcaf82fb7a5d0db64b340d65',
+35 silly install resolved        tarball: 'http://registry.npmjs.org/foundation-cli/-/foundation-cli-2.0.0.tgz' },
+35 silly install resolved     maintainers: [ [Object], [Object], [Object] ],
+35 silly install resolved     directories: {},
+35 silly install resolved     _resolved: 'https://registry.npmjs.org/foundation-cli/-/foundation-cli-2.0.0.tgz',
+35 silly install resolved     readme: 'ERROR: No README data found!' } ]
+36 info install foundation-cli@2.0.0 into /home/apprenti/npm-global/lib
+37 info installOne foundation-cli@2.0.0
+38 verbose installOne of foundation-cli to /home/apprenti/npm-global/lib not in flight; installing
+39 warn locking Error: EACCES, open '/home/apprenti/.npm/_locks/foundation-cli-2ea139f75e4b0410.lock'
+39 warn locking     at Error (native)
+39 warn locking  /home/apprenti/.npm/_locks/foundation-cli-2ea139f75e4b0410.lock failed { [Error: EACCES, open '/home/apprenti/.npm/_locks/foundation-cli-2ea139f75e4b0410.lock']
+39 warn locking   errno: -13,
+39 warn locking   code: 'EACCES',
+39 warn locking   path: '/home/apprenti/.npm/_locks/foundation-cli-2ea139f75e4b0410.lock' }
+40 verbose stack Error: Attempt to unlock /home/apprenti/npm-global/lib/node_modules/foundation-cli, which hasn't been locked
+40 verbose stack     at unlock (/usr/lib/node_modules/npm/lib/utils/locker.js:66:11)
+40 verbose stack     at cb (/usr/lib/node_modules/npm/lib/install.js:1017:5)
+40 verbose stack     at /usr/lib/node_modules/npm/lib/install.js:1021:20
+40 verbose stack     at /usr/lib/node_modules/npm/lib/utils/locker.js:40:9
+40 verbose stack     at cb (/usr/lib/node_modules/npm/node_modules/lockfile/lockfile.js:149:38)
+40 verbose stack     at /usr/lib/node_modules/npm/node_modules/lockfile/lockfile.js:177:38
+40 verbose stack     at FSReqWrap.oncomplete (fs.js:95:15)
+41 verbose cwd /home/apprenti/Projet_ecole/party
+42 error Linux 3.19.0-30-generic
+43 error argv "/usr/bin/node" "/usr/bin/npm" "install" "--global" "foundation-cli"
+44 error node v0.12.7
+45 error npm  v2.11.3
+46 error Attempt to unlock /home/apprenti/npm-global/lib/node_modules/foundation-cli, which hasn't been locked
+47 error If you need help, you may report this error at:
+47 error     <https://github.com/npm/npm/issues>
+48 verbose exit [ 1, true ]

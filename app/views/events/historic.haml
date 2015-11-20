@@ -1,6 +1,6 @@
 %h1 Evénements à venir
 
-= button_to "Nouvel événement", new_event_path, method: :get
+= button_to "Nouvel événement", new_event_path, method: :get, :class => "button_to"
 
 %ul
   - @events.each do |event|

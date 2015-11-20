@@ -7,43 +7,83 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display+SC:400,700italic' rel='stylesheet' type='text/css'>
+  
   <!-- <link rel="stylesheet" type="text/css" href="http://yegor256.github.io/tacit/tacit.min.css"/> -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
 </head>
 
 <header>
   <div class="row">
-    <div class="col-md-12">
-      <%= link_to "/" do %>
-        <img class= "logo" src= "http://evolutionbeautybar.com/wp-content/uploads/2014/02/party-1.gif"/>
-      <%end%>
-      <p class="navbar-text pull-right">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+      <%=link_to "Party", root_path, class: 'title'%>
+    </div>
+    <div class="col-md-4">
+    
+      <p class="navbar-text pull-right color_identif">
         <% if user_signed_in? %>
           <%= current_user.nickname %> | 
-          <%= link_to "Mon compte", user_path(current_user), method: :get, :class => 'navbar-link' %> |
-          <%= link_to 'Editer mon profil', edit_user_registration_path, :class => 'navbar-link' %> |
-          <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+          <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class => 'navbar-link color_identif'  %>
           <% if current_user.admin? %>
             | <%= link_to "Admin", rails_admin_path%>
           <%end%>
         <% else %>
-          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-          <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link color_identif'  %> |
+          <%= link_to "Login", new_user_session_path, :class => 'navbar-link color_identif'  %>
         <% end %>
       </p>
     </div>
   </div>
-  <% if notice %>
+
+<!-- NAVBAR -->
+<% if user_signed_in? %>
+<nav class="navbar navbar-inverse navbar-static-top color_nav" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav ul_nav">
+                <li class = "li_nav"><%=link_to "Evènements", root_path, class: 'link_nav'%></li>
+                <li class = "li_nav"><%=link_to "Créer", new_event_path, class: 'link_nav'%></li>
+                <li class = "li_nav"><%=link_to "Mon compte", user_path(current_user), class: 'link_nav'%></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<%end%>
+</header>
+
+<% if notice %>
     <p class="alert alert-success"><%= notice %></p>
   <% end %>
   <% if alert %>
     <p class="alert alert-danger"><%= alert %></p>
   <% end %>
-</header>
 
-<body>
+<div class="row">
+  <div class="col-md-4">
+  </div>
+   <div class="col-md-4">
+  
+    <body>
 
-  <%= yield %>
+      <%= yield %>
 
-</body>
+    </body>
+  </div>
+  <div class="col-md-4">
+  </div>
+</div>
 
 </html>

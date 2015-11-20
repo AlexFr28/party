@@ -28,15 +28,15 @@
           = f.hidden_field :event_id, :value => @event.id
           = f.label :Nombre_de_personne
           = f.number_field :nb_reservation, :value => 1, min: 1, max: @remaining
-          = f.submit "M'inscrire"
+          = f.submit "M'inscrire", :class => "button"
     - elsif @resa.participation == true
       - if !@resa.paid
         - if @event.private_event
           - # event privé
-          = button_to "Me désinscrire", reservation_path(@resa.id), method: :patch
+          = button_to "Me désinscrire", reservation_path(@resa.id), method: :patch, :class => "button"
         - else
           - # event public
-          = button_to "Me désinscrire", reservation_path(@resa.id), method: :delete
+          = button_to "Me désinscrire", reservation_path(@resa.id), method: :delete, :class => "button_to"
     - else
       - # event privé
       = form_for @resa, url: reservation_path(@resa.id), method: :put do |f|
@@ -44,7 +44,7 @@
         = f.hidden_field :event_id, :value => @event.id
         = f.label :Nombre_de_personne
         = f.number_field :nb_reservation, :value => 1, min: 1, max: @remaining
-        = f.submit "M'inscrire"
+        = f.submit "M'inscrire", :class => "button_to"
 - else
   %ul
     - @reservations.each do |reservation|

@@ -1,31 +1,62 @@
-%div.flash
+.flash
   = flash[:error]
+
 
 %h1 Nouvel évènement
 
 = form_for @event do |f|
-  = f.label :Nom
-  = f.text_field :name, size: 20
-  = f.label :Adresse
-  = f.text_area :address
-  = f.label :Date
-  = f.date_field :date, :minute_step => 15 
-  = f.label :Thème
-  = f.text_field :theme
-  = f.label :Nombre_de_personne
-  = f.number_field :nb_person, :value => 20, min: 0, max: 99
-  = f.label :Prix
-  = f.number_field :price_per_person, :value => 5, min: 0, max: 999, step:0.5
-  = f.label :Date_limite_de_paiement
-  = f.date_field :limit_payment, :minute_step => 15  
-  = f.label :Description
-  = f.text_area :description
-  = f.label :Image
-  = f.text_field :image
+  .row
+    .col-md-12.form_center
+      = f.label :Nom
+      %br
+      = f.text_field :name
+  .row
+    .col-md-12.form_center
+      = f.label :Adresse
+      %br
+      = f.text_area :address
+  .row
+    .col-md-12.form_center
+      = f.label :Date
+      %br
+      = f.date_field :date, :minute_step => 15
+  .row
+    .col-md-12.form_center 
+      = f.label :Thème
+      %br
+      = f.text_field :theme
+  .row
+    .col-md-12.form_center
+      = f.label :Nombre_de_personne
+      %br
+      = f.number_field :nb_person, :value => 20, min: 0, max: 99
+  .row
+    .col-md-12.form_center
+      = f.label :Prix
+      %br
+      = f.number_field :price_per_person, :value => 5, min: 0, max: 999, step:0.5
+  .row
+    .col-md-12.form_center
+      = f.label :Date_limite_de_paiement
+      %br
+      = f.date_field :limit_payment, :minute_step => 15  
+  .row
+    .col-md-12.form_center
+      = f.label :Description
+      %br
+      = f.text_area :description
+  .row
+    .col-md-12.form_center  
+      = f.label :Image
+      %br
+      = f.text_field :image
   = f.hidden_field :user_id, :value => current_user.id 
-
-  = f.label :Evènement_privé
-  = f.check_box :private_event, style: "width: 20px; height: 20px;"
+  .row
+    .col-md-12.form_center
+      = f.label :Evènement_privé
+      %br
+      = f.check_box :private_event, style: "width: 20px; height: 20px;"
   %br
-  
-  = f.submit "Créer"
+  .row
+    .col-md-12.form_center
+      = f.submit " Créer", :class => "button_to"

@@ -14,11 +14,105 @@
  *= require_self
  */
 body {
+  text-align: center;
   padding: 0 !important;
+  background-image: url("http://www.pixeden.com/media/k2/galleries/165/001-subtle-light-pattern-background-texture-vol5.jpg");
 }
+
+html, body {
+ width: auto !important;
+ overflow-x: hidden !important;
+}
+
+
+ /*NAVBAR*/ 
 header {
-  background-color: #35D4A4;
+  
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #C644FC), color-stop(100, #5856D6));
+
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-linear-gradient(top, #C644FC 0%, #5856D6 100%);
+}
+.color_identif {
+  color: white;
+}
+.color_identif:visited {
+    color: white;
 }
 .logo{
    width: 90px;
+   font-size: 50%;
+}
+
+.li_nav{
+  width: 33%;
+  color: white;
+}
+
+.ul_nav{
+  width: 100%;
+}
+.link_nav {
+  font-size: 30px;
+  line-height: 10px;
+  color: white;
+}
+
+.title{
+
+  font-size: 50px;
+  color: white;
+  
+  font-family: 'Playfair Display SC', serif;
+}
+
+.color_nav{
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #4A4A4A), color-stop(100, #2B2B2B));
+
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-linear-gradient(top, #4A4A4A 0%, #2B2B2B 100%);
+}
+
+li {
+  list-style-type: none;
+}
+
+/*AUTRES*/
+.button_to{
+  width: 100%;
+  /* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #4A4A4A), color-stop(100, #2B2B2B));
+
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-linear-gradient(top, #4A4A4A 0%, #2B2B2B 100%);
+color: white;
+font-size: 30px;
+}
+
+.form_center{
+  text-align: left;
+
+}
+/*INDEX*/
+.event_box{
+  border-style: solid;
+  border-width: 2px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  width: : 100%;
+}
+/*MEDIA QUERIES*/
+@media screen and (min-width: 200px) and (max-width: 640px) {
+.logo{
+   width: 90px;
+   font-size: 150px;
+}
+
+.title{
+
+  font-size: 150px;
+  
+}
 }
