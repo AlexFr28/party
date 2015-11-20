@@ -77,7 +77,7 @@ Event.create(
 Reservation.create(
 {
       paid: true,
-      penalty: 1.05,
+      penalty: 0,
       nb_reservation: 2,
       note: 5,
       message: "",

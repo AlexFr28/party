@@ -5,7 +5,12 @@ class EventsController < ApplicationController
   end
 
   def historic
-    @events = Event.all.order("date DESC")
+    reservations = current_user.reservations
+    @events = []
+    reservations.each do |reservation|
+      @events << reservation.event
+    end
+    # @events = Event.all.order("date DESC")
   end
 
   def new
@@ -51,10 +56,16 @@ class EventsController < ApplicationController
 
     # calcul de la pénalité
     d = @event.limit_payment.to_datetime
-    day_of_penality = ((DateTime.now.to_f - d.to_f)/60/60/24).ceil
-    if @resa != nil && day_of_penality > 0
+    day_of_penalty = ((DateTime.now.to_f - d.to_f)/60/60/24).ceil
+    if @resa != nil && day_of_penalty > 0
       if @resa.participation
-        @penality = 0.5 * day_of_penality
+        penalty = 0.5 * day_of_penalty
+      else
+        penalty = 0
+      end
+      if @resa.penalty != penalty
+        @resa.penalty = penalty
+        @resa.save
       end
     end
 

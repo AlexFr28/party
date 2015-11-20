@@ -14,8 +14,9 @@
 
 %p= @event.description
 
-- if @penality > 0
-  %p= "Pénalité de #{@penality}€"
+- if @resa != nil
+  - if @resa.penalty > 0
+    %p= "Pénalité de #{@resa.penalty}€"
 
 - if @event.user != current_user
   - if @event.date > DateTime.now
