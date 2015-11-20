@@ -55,17 +55,19 @@ class EventsController < ApplicationController
     @resa = Reservation.where(user_id: current_user.id, event_id: @event.id)[0]
 
     # calcul de la pénalité
-    d = @event.limit_payment.to_datetime
-    day_of_penalty = ((DateTime.now.to_f - d.to_f)/60/60/24).ceil
-    if @resa != nil && day_of_penalty > 0
-      if @resa.participation
-        penalty = 0.5 * day_of_penalty
-      else
-        penalty = 0
-      end
-      if @resa.penalty != penalty
-        @resa.penalty = penalty
-        @resa.save
+    if @event.limit_payment != nil
+      d = @event.limit_payment.to_datetime
+      day_of_penalty = ((DateTime.now.to_f - d.to_f)/60/60/24).ceil
+      if @resa != nil && day_of_penalty > 0
+        if @resa.participation
+          penalty = 0.5 * day_of_penalty
+        else
+          penalty = 0
+        end
+        if @resa.penalty != penalty
+          @resa.penalty = penalty
+          @resa.save
+        end
       end
     end
 
