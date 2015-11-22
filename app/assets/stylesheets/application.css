@@ -16,7 +16,6 @@
 body {
   text-align: center;
   padding: 0 !important;
-  background-image: url("http://www.pixeden.com/media/k2/galleries/165/001-subtle-light-pattern-background-texture-vol5.jpg");
 }
 
 html, body {
@@ -29,10 +28,10 @@ html, body {
 header {
   
 /* Webkit (Safari/Chrome 10) */ 
-background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #C644FC), color-stop(100, #5856D6));
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #DBDDDE), color-stop(100, #898C90));
 
 /* Webkit (Chrome 11+) */ 
-background-image: -webkit-linear-gradient(top, #C644FC 0%, #5856D6 100%);
+background-image: -webkit-linear-gradient(top, #DBDDDE 0%, #898C90 100%);
 }
 .color_identif {
   color: white;
@@ -95,6 +94,8 @@ font-size: 30px;
   text-align: left;
 
 }
+
+
 /*INDEX*/
 .event_box{
   border-style: solid;
@@ -107,12 +108,12 @@ font-size: 30px;
 @media screen and (min-width: 200px) and (max-width: 640px) {
 .logo{
    width: 90px;
-   font-size: 150px;
+   font-size: 100px;
 }
 
 .title{
 
-  font-size: 150px;
+  font-size: 80px;
   
 }
 }

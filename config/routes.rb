@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount RailsAdmin::Engine        => '/admin', as: 'rails_admin'
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -19,9 +19,10 @@ Rails.application.routes.draw do
   resources :events
   resources :reservations
 
-  get 'participants/:id' => 'events#participants', as: :participants
+  get 'edit/:id'                   => 'users#edit'           
+  get 'participants/:id'           => 'events#participants', as: :participants
   get 'payment/:event_id/:resa_id' => 'events#payment', as: :payment
-  get 'historic' => 'events#historic', as: :historic
+  get 'historic'                   => 'events#historic', as: :historic
 
   # Example resource route with options:
   #   resources :products do
